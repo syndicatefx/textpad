@@ -2,6 +2,7 @@
  *
  *  File: app.js
  *  Author: Paulo Nunes, http://syndicatefx.com
+ *  Source: https://github.com/syndicatefx/textpad
  *  License: MIT
  */
 
