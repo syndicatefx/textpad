@@ -1,4 +1,4 @@
-/*  TextPad - 1.0.0
+/*  TextPad - 1.1.0
  *
  *  File: app.js
  *  Author: Paulo Nunes, http://syndicatefx.com
@@ -70,6 +70,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
     if(localStorage.getItem("textPad-content")) {
       content.value = localStorage.getItem("textPad-content");
     }
+
+    if(localStorage.getItem("textPad-theme")) {
+      var themeClass = localStorage.getItem("textPad-theme");
+      document.querySelector("html").classList.add(themeClass); 
+    }
     
   }else{  //3
     smoke.alert("Sorry, either your browser doesn't support LocalStorage, or you have exceeded storage limits!");
@@ -131,6 +136,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   theme.addEventListener("click", function() {
     document.querySelector("html").classList.toggle("night");
+
+    var themeClass = localStorage.getItem("textPad-theme");
+
+    if(themeClass == "night"){
+      localStorage.removeItem("textPad-theme");
+    } else{
+      localStorage.setItem("textPad-theme", "night");
+    }
   });
 
   // Info panel
