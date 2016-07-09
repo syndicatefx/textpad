@@ -22,7 +22,18 @@ These have been minified and included in app.js, without them half of TextPad's 
 
 ##ChangeLog:
 
-###Ver 1.1.0 (02-06-2016)
+###Ver 1.1.5 (09-07-2016)
+
+- Minor code organization(app.js)
+- Changes needed to match online version(index.html)
+-- Info text == online version
+-- Added link to online Disclaimer page(app name issues)
+-- Added Github star button
+- Removed xmlns attribute from inline svg(index.html)
+- Removed nav width, now 100% window(app.css)
+- Added new alert/dialog icons(app.css)
+
+###Ver 1.1.0 (02-07-2016)
 
 - Added ability to store user theme setting
 
