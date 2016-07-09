@@ -1,4 +1,4 @@
-/*  TextPad - 1.1.0
+/*  TextPad - 1.1.5
  *
  *  File: app.js
  *  Author: Paulo Nunes, http://syndicatefx.com
@@ -15,27 +15,27 @@ var saveAs=saveAs||function(r){"use strict";if("undefined"==typeof navigator||!/
 // Countable.js - https://github.com/RadLikeWhoa/Countable
 !function(e){"use strict";function n(e){for(var n,t,r=[],o=0,i=e.length;i>o;)n=e.charCodeAt(o++),n>=55296&&56319>=n&&i>o?(t=e.charCodeAt(o++),56320==(64512&t)?r.push(((1023&n)<<10)+(1023&t)+65536):(r.push(n,t),o--)):r.push(n);return r}function t(e,n){var t=Object.prototype.toString.call(e),r=e&&(("[object NodeList]"===t||"[object HTMLCollection]"===t)&&e.length||1===e.nodeType),o=n&&"function"==typeof n;return"console"in window&&"warn"in console&&(r||console.warn("Countable: No valid elements were found"),o||console.warn('Countable: "'+n+'" is not a valid callback function')),r&&o}function r(e){var n={hardReturns:!1,stripTags:!1,ignoreReturns:!1,ignoreZeroWidth:!0};for(var t in e)n.hasOwnProperty(t)&&(n[t]=e[t]);return n}function o(e,t){var r,o=""+("value"in e?e.value:e.innerText||e.textContent);return t.stripTags&&(o=o.replace(/<\/?[a-z][^>]*>/gi,"")),t.ignoreZeroWidth&&(o=o.replace(/[\u200B]+/,"")),r=o.trim(),{paragraphs:r?(r.match(t.hardReturns?/\n{2,}/g:/\n+/g)||[]).length+1:0,sentences:r?(r.match(/[.?!…]+./g)||[]).length+1:0,words:r?(r.replace(/['";:,.?¿\-!¡]+/g,"").match(/\S+/g)||[]).length:0,characters:r?n(r.replace(/\s/g,"")).length:0,all:n(t.ignoreReturns?o.replace(/[\n\r]/g,""):o).length}}function i(e,n){var t=e.length;if("undefined"!=typeof t)for(;t--;)n(e[t]);else n(e)}var a=[],c="oninput"in document?"input":"keyup";navigator.userAgent.match(/MSIE 9.0/)&&(c="keyup"),String.prototype.trim||(String.prototype.trim=function(){return this.replace(/^\s+|\s+$/g,"")});var u={live:function(e,n,u){var l=r(u),s=function(e){var t=function(){n.call(e,o(e,l))};a.push({element:e,handler:t}),t(),e.addEventListener?e.addEventListener(c,t,!1):e.attachEvent&&e.attachEvent("on"+c,t)};if(t(e,n))return e.length?i(e,s):s(e),this},die:function(e){return t(e,function(){})?(i(e,function(e){var n;i(a,function(t){t.element===e&&(n=t)}),n&&(e.removeEventListener?e.removeEventListener(c,n.handler,!1):e.detachEvent&&e.detachEvent("on"+c,n.handler),a.splice(a.indexOf(n),1))}),this):void 0},once:function(e,n,a){return t(e,n)?(i(e,function(e){n.call(e,o(e,r(a)))}),this):void 0},count:function(e,n,t){return this.once(e,n,t)},enabled:function(e){var n=!1;return e&&1===e.nodeType&&i(a,function(t){t.element===e&&(n=!0)}),n}};"object"==typeof exports?module.exports=u:"function"==typeof define&&define.amd?define(function(){return u}):e.Countable=u}(this);
 
-/*--------------------------------------  
- *  Let's build this puppy! 
+/*--------------------------------------
+ *  Let's build this puppy!
  *  Bare with me, i'm not a Javascript guru.
  *-------------------------------------*/
 
-document.addEventListener("DOMContentLoaded", function(event) { 
+document.addEventListener("DOMContentLoaded", function(event) {
 
   // Declare our variables
 
-  var title = document.getElementById("fileName");
-  var content = document.getElementById("fileContent");
-  var start = document.getElementById("start");
-  var home = document.getElementById("homepage");
-  var save = document.getElementById("save");
-  var clear = document.getElementById("clear");
-  var theme = document.getElementById("theme");
-  var info = document.getElementById("info");
-  var chars = document.getElementById("charCounter");
-  var words = document.getElementById("wordCounter");
+  var title   = document.getElementById("fileName"),
+      content = document.getElementById("fileContent"),
+      start   = document.getElementById("start"),
+      home    = document.getElementById("homepage"),
+      save    = document.getElementById("save"),
+      clear   = document.getElementById("clear"),
+      theme   = document.getElementById("theme"),
+      info    = document.getElementById("info"),
+      chars   = document.getElementById("charCounter"),
+      words   = document.getElementById("wordCounter");
 
-  /*-------------------------------------  
+  /*-------------------------------------
    *  Deal with LocalStorage availability
    *  1.Test to see if LocalStorage is available.
    *  2.If available, set and get items, where good to go.
@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   };
 
   if(hasStorage() === true){  //2
-    
+
     content.addEventListener("keyup", function() {
       localStorage.setItem("textPad-content", this.value);
     });
@@ -73,9 +73,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     if(localStorage.getItem("textPad-theme")) {
       var themeClass = localStorage.getItem("textPad-theme");
-      document.querySelector("html").classList.add(themeClass); 
+      document.querySelector("html").classList.add(themeClass);
     }
-    
+
   }else{  //3
     smoke.alert("Sorry, either your browser doesn't support LocalStorage, or you have exceeded storage limits!");
   };
@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
    * Menu actions
    *----------------------------------*/
 
-  // Do the Filesave
+  // Save File(icon)
 
   save.addEventListener("click", function(event) {
     event.preventDefault();
@@ -103,14 +103,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
         ok: "Save",
         cancel: "Cancel"
       });
-          
+
     } else {
       saveAs(blob, title.value + ".txt");
     };
 
   }, false);
 
-  // Do delete/clear
+  // Delete/clear(icon)
 
   clear.addEventListener("click", function(e) {
     if(content.value == "" && title.value == "") {
@@ -132,34 +132,39 @@ document.addEventListener("DOMContentLoaded", function(event) {
     };
   });
 
-  // Change Theme
+  // Change Theme(icon)
 
   theme.addEventListener("click", function() {
     document.querySelector("html").classList.toggle("night");
 
     var themeClass = localStorage.getItem("textPad-theme");
 
-    if(themeClass == "night"){
+    if(themeClass == "night") {
       localStorage.removeItem("textPad-theme");
-    } else{
+    } else {
       localStorage.setItem("textPad-theme", "night");
     }
   });
 
-  // Info panel
+  // Show info(icon)
+
+  info.addEventListener("click", function() {
+    home.classList.add("active");
+  });
+
+  /*-----------------------------------
+   * Info Panel
+   *----------------------------------*/
 
   // Start writing button
+
   start.addEventListener("click", function() {
     home.classList.remove("active");
     content.focus();
   });
 
-  // Show info button(icon)
-  info.addEventListener("click", function() {
-    home.classList.add("active");
-  });
-
   // First time here, or no items stored, show info panel
+
   if(content.value == "") {
     home.classList.add("active");
   };
