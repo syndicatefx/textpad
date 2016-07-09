@@ -26,9 +26,9 @@ These have been minified and included in app.js, without them half of TextPad's 
 
 - Minor code organization(app.js)
 - Changes needed to match online version(index.html)
--- Info text == online version
--- Added link to online Disclaimer page(app name issues)
--- Added Github star button
+    - Info text == online version
+    - Added link to online Disclaimer page(app name issues)
+    - Added Github star button
 - Removed xmlns attribute from inline svg(index.html)
 - Removed nav width, now 100% window(app.css)
 - Added new alert/dialog icons(app.css)
