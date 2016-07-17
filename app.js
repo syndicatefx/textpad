@@ -1,4 +1,4 @@
-/*  TextPad - 1.1.5
+/*  TextPad - 1.2.0-beta
  *
  *  File: app.js
  *  Author: Paulo Nunes, http://syndicatefx.com
@@ -30,7 +30,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
       home    = document.getElementById("homepage"),
       save    = document.getElementById("save"),
       clear   = document.getElementById("clear"),
+      settings= document.getElementById("settings"),
+      setMenu = document.getElementById("setMenu"),
+      fs      = document.getElementById("fs"),
+      lh      = document.getElementById("lh"),
+      lw      = document.getElementById("lw"),
       theme   = document.getElementById("theme"),
+      reset   = document.getElementById("reset"),
       info    = document.getElementById("info"),
       chars   = document.getElementById("charCounter"),
       words   = document.getElementById("wordCounter");
@@ -75,6 +81,24 @@ document.addEventListener("DOMContentLoaded", function(event) {
       var themeClass = localStorage.getItem("textPad-theme");
       document.querySelector("html").classList.add(themeClass);
     }
+
+    if(localStorage.getItem("textPad-settings")) {
+      content.style.cssText = localStorage.getItem("textPad-settings");
+    }
+
+    if(localStorage.getItem("textPad-settings-fs")) {
+      fs.value = localStorage.getItem("textPad-settings-fs");
+    }
+
+    if(localStorage.getItem("textPad-settings-lh")) {
+      lh.value = localStorage.getItem("textPad-settings-lh");
+    }
+
+    if(localStorage.getItem("textPad-settings-lw")) {
+      lw.value = localStorage.getItem("textPad-settings-lw");
+    }
+
+
 
   }else{  //3
     smoke.alert("Sorry, either your browser doesn't support LocalStorage, or you have exceeded storage limits!");
@@ -132,7 +156,61 @@ document.addEventListener("DOMContentLoaded", function(event) {
     };
   });
 
-  // Change Theme(icon)
+  // Settings(icon)
+
+  settings.addEventListener("click", function() {
+    this.classList.toggle("settings-btn--active");
+    setMenu.classList.toggle("settings-menu--open");
+  });
+
+  /*-----------------------------------
+   * Settings Sub-Menu actions
+   *----------------------------------*/
+
+  // Store all text settings
+
+  function textSettings() {
+    // Get the element values
+    fsValue = fs.value;
+    lhValue = lh.value;
+    lwValue = lw.value;
+
+    // Set styles with new values
+    settingValues = "font-size:" + fsValue + "em;line-height:" + lhValue + ";padding-left:" + lwValue + "em;padding-right:" + lwValue + "em;";
+    
+    // Store settings
+    localStorage.setItem("textPad-settings", settingValues);
+    localStorage.setItem("textPad-settings-fs", fsValue);
+    localStorage.setItem("textPad-settings-lh", lhValue);
+    localStorage.setItem("textPad-settings-lw", lwValue);
+  };
+
+  // Text Resize
+
+  fs.addEventListener("input", function() {
+    val = fs.value;
+    content.style.fontSize = val + "em";
+    textSettings();
+  });
+
+  // Text line height
+
+  lh.addEventListener("input", function() {
+    val = lh.value;
+    content.style.lineHeight = val;
+    textSettings();
+  });
+
+  // Line width (simulated by using paddings on textarea)
+
+  lw.addEventListener("input", function() {
+    val = lw.value;
+    content.style.paddingLeft = val + "em";
+    content.style.paddingRight = val + "em";
+    textSettings();
+  });
+
+  // Change Theme
 
   theme.addEventListener("click", function() {
     document.querySelector("html").classList.toggle("night");
@@ -146,11 +224,28 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
   });
 
-  // Show info(icon)
+  // Reset all text settings
 
-  info.addEventListener("click", function() {
-    home.classList.add("active");
+  reset.addEventListener("click", function() {
+    localStorage.removeItem("textPad-settings");
+    localStorage.removeItem("textPad-settings-fs");
+    localStorage.removeItem("textPad-settings-lh");
+    localStorage.removeItem("textPad-settings-lw");
+
+    content.removeAttribute("style");
+    
+    fs.value = 1;
+    lh.value = 1.9;
+    lw.value = 16;
+
   });
+
+  // Close sub-menu on content focus
+
+  content.onclick = function() {
+    setMenu.classList.remove("settings-menu--open");
+    settings.classList.remove("settings-btn--active");
+  };
 
   /*-----------------------------------
    * Info Panel
@@ -168,6 +263,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
   if(content.value == "") {
     home.classList.add("active");
   };
+
+  // Show info(icon)
+
+  info.addEventListener("click", function() {
+    home.classList.add("active");
+  });
 
   /*-----------------------------------
    * Characters + word counter
