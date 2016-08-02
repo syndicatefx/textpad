@@ -1,6 +1,6 @@
 ##ChangeLog
 
-###Ver 1.2.0 (02-08-2016)
+###1.2.0 (02-08-2016)
 
 - Added new text settings feature
     - Ability to change font size
@@ -11,7 +11,7 @@
     - Info button now on bottom-left of window
     - The info/about panel only shows if icon is clicked, does not display on inicial pageload like previous version.
 
-###Ver 1.1.5 (09-07-2016)
+###1.1.5 (09-07-2016)
 
 - Minor code organization(app.js)
 - Changes needed to match online version(index.html)
@@ -22,10 +22,10 @@
 - Removed nav width, now 100% window(app.css)
 - Added new alert/dialog icons(app.css)
 
-###Ver 1.1.0 (02-07-2016)
+###1.1.0 (02-07-2016)
 
 - Added ability to store user theme setting
 
-###Ver 1.0.0 (30-05-2016)
+###1.0.0 (30-05-2016)
 
 - Inicial realease
