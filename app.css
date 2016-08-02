@@ -137,7 +137,9 @@ svg {
   fill: #999;
 }
 
-/* Header */
+/*---
+Header
+---*/
 
 header {
   position: fixed;
@@ -197,7 +199,9 @@ nav input {
   fill: #fd971f;
 }
 
-/* Sub-menu */
+/*--
+Sub-menu
+---*/
 
 .settings-menu {
   position: absolute;
@@ -249,7 +253,9 @@ nav input {
   width: 50%;
 }
 
-/*Settings sliders*/
+/*---
+Settings sliders
+---*/
 
 input[type=range] {
   -webkit-appearance: none;
@@ -342,7 +348,9 @@ input[type=range]:focus::-ms-fill-upper {
   background: #999;
 }
 
-/* Info Section */
+/*---
+Info Section
+---*/
 
 .overlay {
   position: fixed;
@@ -416,7 +424,9 @@ a {
   text-decoration: none;
 }
 
-/* Footer */
+/*---
+Footer
+---*/
 
 footer {
   position: fixed;
@@ -444,7 +454,9 @@ footer {
   text-align: right;
 }
 
-/* Alerts/Dialogs */
+/*---
+Alerts/Dialogs 
+---*/
 
 .smoke-base {
   position: fixed;

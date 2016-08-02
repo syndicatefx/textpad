@@ -19,3 +19,5 @@ Another browser text editor...I know, i know. Just because i can and want to!
 - Countable.js - [https://github.com/RadLikeWhoa/Countable](https://github.com/RadLikeWhoa/Countable)
 
 These have been minified and included in app.js, without them half of TextPad's features wouldn't be possible.
+
+Read the CHANGELOG.md for info on new release!
