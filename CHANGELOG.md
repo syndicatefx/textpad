@@ -1,4 +1,4 @@
-##ChangeLog:
+##ChangeLog
 
 ###Ver 1.2.0 (02-08-2016)
 
