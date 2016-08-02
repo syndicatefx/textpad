@@ -1,4 +1,4 @@
-/*  TextPad - 1.2.0-beta
+/*  TextPad - 1.2.0
  *
  *  File: app.js
  *  Author: Paulo Nunes, http://syndicatefx.com
@@ -115,6 +115,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     var blob = new Blob([content.value || content.placeholder],{type: "text/plain;charset=utf-8"});
 
     if(title.value == "") {
+      
       smoke.prompt("Please give your file a title!\n or just keep the default below.", function(e) {
         if(e) {
           title.value = e;
@@ -242,10 +243,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   // Close sub-menu on content focus
 
-  content.onclick = function() {
+  content.addEventListener("click", function() {
     setMenu.classList.remove("settings-menu--open");
     settings.classList.remove("settings-btn--active");
-  };
+  });
 
   /*-----------------------------------
    * Info Panel
@@ -257,12 +258,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     home.classList.remove("active");
     content.focus();
   });
-
-  // First time here, or no items stored, show info panel
-
-  if(content.value == "") {
-    home.classList.add("active");
-  };
 
   // Show info(icon)
 
