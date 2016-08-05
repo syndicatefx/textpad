@@ -33,6 +33,7 @@ body {
   font-size: 1em;
   line-height: 1.7;
   padding: 1em 0;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 ul {
@@ -184,7 +185,7 @@ nav input {
   -ms-flex: 2;
   flex: 2;
   text-align: right;
-  padding: .5em .5em 0 0;
+  padding: .5em 2em 0 0;
 }
 
 .save-btn:hover svg {
@@ -206,7 +207,7 @@ Sub-menu
 .settings-menu {
   position: absolute;
   top: 4em;
-  right: .5em;
+  right: 2em;
   width: 14em;
   height: 16em;
   background: #fff;
