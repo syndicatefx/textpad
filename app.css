@@ -33,6 +33,7 @@ body {
   font-size: 1em;
   line-height: 1.7;
   padding: 1em 0;
+  /*Fix for FF on Mac: Font rendering a bit bolder than it should*/
   -moz-osx-font-smoothing: grayscale;
 }
 
