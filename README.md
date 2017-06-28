@@ -2,9 +2,9 @@
 
 A simple online notepad, no WYSIWYG, no fancy stuff, just write. The text will live in your browser until you decide to delete or download it as a .txt file.
 
-###[Try it!](http://textpad.surge.sh)
+### [Try it!](http://textpad.surge.sh)
 
-##Why? 
+## Why? 
 
 Another browser text editor...I know, i know. Just because i can and want to!
  
@@ -12,7 +12,7 @@ Another browser text editor...I know, i know. Just because i can and want to!
 2. This little app also helps keep me focused when doing research online, taking notes without switching between a text editor and the browser.
 3. Inspired by others, and i wanted to really build something using [LocalStorage](https://developer.mozilla.org/en-US/docs/Web/API/Storage/LocalStorage).
 
-##Thanks to:
+## Thanks to:
 
 - FileSaver.js - [https://github.com/eligrey/FileSaver.js](https://github.com/eligrey/FileSaver.js)
 - Smoke.js - [https://github.com/hxgf/smoke.js](https://github.com/hxgf/smoke.js)
