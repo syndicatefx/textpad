@@ -1,5 +1,9 @@
 ## ChangeLog
 
+### 1.2.1 (12-08-2017)
+
+- Increased max padding values on textarea for shorter line widths
+
 ### 1.2.0 (02-08-2016)
 
 - Added new text settings feature
