@@ -1,4 +1,4 @@
-/*  TextPad - 1.2.0
+/*  TextPad - 1.2.1
  *
  *  File: app.js
  *  Author: Paulo Nunes, http://syndicatefx.com
